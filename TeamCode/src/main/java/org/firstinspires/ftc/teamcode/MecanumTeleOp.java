@@ -59,6 +59,10 @@ public class MecanumTeleOp extends LinearOpMode {
                     }
                 }
             }
+            if (gamepad1.dpad_up) {
+                shooterStage = 0;
+                shooter.setState(Shooter.States.OFF);
+            }
             lastX = gamepad1.x;
             shooter.update();
         }

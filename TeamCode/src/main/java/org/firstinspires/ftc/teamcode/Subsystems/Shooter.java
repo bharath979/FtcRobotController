@@ -44,6 +44,7 @@ public class Shooter {
             case OFF:
                 bottomShooterMotor.setPower(0);
                 topShooterMotor.setPower(0);
+
         }
     } // <-- update() ends here
 
