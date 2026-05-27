@@ -19,6 +19,8 @@ public class MecanumTeleOp extends LinearOpMode {
         shooter.initiate(hardwareMap);
         boolean lastX = false;
         int shooterStage = 0;
+        boolean lastB = false;
+        boolean servoOpen = false;
         waitForStart();
         if (isStopRequested()) return;
 
@@ -49,22 +51,20 @@ public class MecanumTeleOp extends LinearOpMode {
                     shooterStage = (shooterStage % 4) + 1;
                     switch (shooterStage) {
                         case 1:
-                            shooter.setState(Shooter.States.SPOWER); break;
+                            shooter.setState(Shooter.States.SPOWER);
+                            break;
                         case 2:
-                            shooter.setState(Shooter.States.MPOWER); break;
+                            shooter.setState(Shooter.States.MPOWER);
+                            break;
                         case 3:
-                            shooter.setState(Shooter.States.LPOWER); break;
+                            shooter.setState(Shooter.States.LPOWER);
+                            break;
                         case 4:
-                            shooter.setState(Shooter.States.MPOWER); break;
+                            shooter.setState(Shooter.States.MPOWER);
+                            break;
                     }
                 }
             }
-            if (gamepad1.dpad_up) {
-                shooterStage = 0;
-                shooter.setState(Shooter.States.OFF);
-            }
-            lastX = gamepad1.x;
-            shooter.update();
         }
     }
 }
