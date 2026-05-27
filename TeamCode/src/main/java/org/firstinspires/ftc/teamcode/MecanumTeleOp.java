@@ -43,7 +43,7 @@ public class MecanumTeleOp extends LinearOpMode {
 
             if (gamepad1.x && !lastX) {
                 if (shooterStage == 0) {
-                    shooterStage = 1; 
+                    shooterStage = 1;
                     shooter.setState(Shooter.States.SPOWER);
                 } else {
                     shooterStage = (shooterStage % 4) + 1;
