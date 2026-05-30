@@ -9,6 +9,7 @@ public class Intake {
     }
     private States state = States.STOP;
     DcMotor intakeMotor;
+    DcMotor transferMotor;
     public static double inPower = 0.85;
     public static double outPower = -0.85;
 
@@ -32,6 +33,7 @@ public class Intake {
                 intakeMotor.setPower(0);
                 break;
         }
+        transferMotor.setPower(-intakeMotor.getPower());
     }
     public States getState() {
         return state;

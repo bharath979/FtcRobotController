@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
+import org.firstinspires.ftc.teamcode.Subsystems.Gate;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 import org.firstinspires.ftc.teamcode.Subsystems.Shooter;
 
@@ -15,13 +16,19 @@ public class MecanumTeleOp extends LinearOpMode {
         drivetrain.initiate(hardwareMap);
         Intake intake = new Intake();
         intake.initiate(hardwareMap);
+        Gate gate = new Gate();
+        gate.initiate(hardwareMap);
         Shooter shooter = new Shooter();
         shooter.initiate(hardwareMap);
         boolean lastX = false;
         int shooterStage = 0;
         boolean lastB = false;
         boolean servoOpen = false;
+
+
         waitForStart();
+
+
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
@@ -40,6 +47,24 @@ public class MecanumTeleOp extends LinearOpMode {
                 intake.setState(Intake.States.STOP);
             }
             intake.update();
+
+
+            // Gate
+            if (gamepad1.xWasPressed()){
+                if (gate.getState() == Gate.States.CLOSE);
+                gate.setState(Gate.States.OPEN);
+            } else {
+                gate.setState(Gate.States.CLOSE);
+            }
+
+
+
+
+
+
+
+
+
 
             if (gamepad1.x && !lastX) {
                 if (shooterStage == 0) {
